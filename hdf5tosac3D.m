@@ -1,5 +1,7 @@
+path(path, './hdf5_and_gdf/')
 %h5filename='/data/cs1mkg/smaug_spicule1/spicule4b1_3_3d/zerospic1__711000.out';
-filename='spruit.gdf';
+%filename='spruit.gdf';
+filename='/data/sm1ajl/mhs_atmosphere/drew_model/drew_model.gdf';
 
 % gdfinfo=h5info(h5filename);
 % 
