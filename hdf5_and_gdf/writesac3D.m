@@ -1,10 +1,20 @@
 function writesac3D(filename, simparams, simgridinfo, simdata, mode)
-
+    fid = fopen(filename,'w');
+    is=1;
+    js=1;
+    ks=1;
+    iif=simparams.domain_dimensions(1);
+    jf=simparams.domain_dimensions(2);
+    kf=simparams.domain_dimensions(3);
+    
+    p.dx(1)=(simparams.domain_right_edge(1)-simparams.domain_left_edge(1))/(simparams.domain_dimensions(1));
+    p.dx(2)=(simparams.domain_right_edge(2)-simparams.domain_left_edge(2))/(simparams.domain_dimensions(2));
+    p.dx(3)=(simparams.domain_right_edge(3)-simparams.domain_left_edge(3))/(simparams.domain_dimensions(3));
 
     
     if strcmp(mode , 'binary')
 
-           fid = fopen(filename,'w'); 
+ 
            headline=char(zeros(1,79));
            sz=size(simparams.unique_identifier);
            if(sz(2)>79)
@@ -54,16 +64,6 @@ function writesac3D(filename, simparams, simgridinfo, simdata, mode)
            varnames(1:sz(2))=tvarnames;
            fwrite(fid,varnames,'char*1');
   
-               is=1;
-    js=1;
-    ks=1;
-    iif=simparams.domain_dimensions(1);
-    jf=simparams.domain_dimensions(2);
-    kf=simparams.domain_dimensions(3);
-    
-    p.dx(1)=(simparams.domain_right_edge(1)-simparams.domain_left_edge(1))/(simparams.domain_dimensions(1));
-    p.dx(2)=(simparams.domain_right_edge(2)-simparams.domain_left_edge(2))/(simparams.domain_dimensions(2));
-    p.dx(3)=(simparams.domain_right_edge(3)-simparams.domain_left_edge(3))/(simparams.domain_dimensions(3));
            for k1=ks:kf
                for j1=js:jf
                      for i1=is:iif
@@ -99,23 +99,6 @@ function writesac3D(filename, simparams, simgridinfo, simdata, mode)
 
    if strcmp(mode , 'ascii')
        
-          fid=fopen(filename, 'w');
-    
-    
-    is=1;
-    js=1;
-    ks=1;
-    iif=simparams.domain_dimensions(1);
-    jf=simparams.domain_dimensions(2);
-    kf=simparams.domain_dimensions(3);
-   
-   %iif=4;
-   %jf=4;
-   %kf=4;
-    
-    p.dx(1)=(simparams.domain_right_edge(1)-simparams.domain_left_edge(1))/(simparams.domain_dimensions(1));
-    p.dx(2)=(simparams.domain_right_edge(2)-simparams.domain_left_edge(2))/(simparams.domain_dimensions(2));
-    p.dx(3)=(simparams.domain_right_edge(3)-simparams.domain_left_edge(3))/(simparams.domain_dimensions(3));
  
        
        
